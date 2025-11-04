@@ -1,32 +1,55 @@
 public class CalculatorModel {
-  private int currentValue;
-  private int storedValue;
-  char pendingOperator;
+  private int storedValue; //sparas i beräkningen
+  private String displayValue; //det som visas på displayen
+  String pendingOperator;
 
-  boolean enteringNewNumber;
+  boolean enteringNewNumber; //avgör om nästa tal ska skriva över eller adderas till display
   boolean errorFlag;
 
   public CalculatorModel() {
     enteringNewNumber = true;
   }
 
-  void inputDigit(char digit) {
-    if ()
-
+  void inputDigit(int digit) {
+    if (enteringNewNumber) {
+      displayValue = Integer.toString(digit);
+      enteringNewNumber = false;
+    } else {
+      displayValue += Integer.toString(digit);
+    }
   }
 
-  void applyOperator(char op) {
+  void applyOperator(String op) {
     //ska ta in och använda operator
-    if (pendingOperator == '/' && currentValue == 0) {
+    int displayInt = Integer.parseInt(displayValue)
+    if (pendingOperator == null) {
+      storedValue = displayInt;
+      return;
+    }
+    if (pendingOperator.equals("/") && displayValue.equals("0")) {
       errorFlag = true;
     }
-      storedValue = storedValue (pendingOp) currentValue;
+    switch(pendingOperator) {
+      case "+":
+        storedValue += displayInt;
+        break;
+      case "-":
+        storedValue -= displayInt;
+        break;
+      case "*":
+        storedValue *= displayInt;
+        break;
+      case "/":
+        storedValue /= displayInt;
+    }
+
     pendingOperator = op;
+    enteringNewNumber = true;
 
   }
 
   void clear() {
-    //resettar det mesta
+
   }
 
   void equals() {
@@ -37,8 +60,7 @@ public class CalculatorModel {
     if (errorFlag) {
       return "Syntax Error";
     }
-
-    return "implement";
+    return displayValue;
   }
 
 }
