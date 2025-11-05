@@ -21,13 +21,24 @@ public class CalculatorModel {
 
   void applyOperator(String op) {
     //ska ta in och använda operator
-    int displayInt = Integer.parseInt(displayValue)
+    int displayInt = Integer.parseInt(displayValue);
+
+    if (storedValue == 0) {
+      storedValue = displayInt;
+      enteringNewNumber = true;
+      pendingOperator = op;
+      return;
+    }
+
     if (pendingOperator == null) {
       storedValue = displayInt;
+      pendingOperator = op;
+      enteringNewNumber = true;
       return;
     }
     if (pendingOperator.equals("/") && displayValue.equals("0")) {
       errorFlag = true;
+      return;
     }
     switch(pendingOperator) {
       case "+":
@@ -53,7 +64,32 @@ public class CalculatorModel {
   }
 
   void equals() {
-    //beräknar värde
+    int displayInt = Integer.parseInt(displayValue);
+
+    if (pendingOperator == null) {
+      enteringNewNumber = true;
+      return;
+    }
+    if (pendingOperator.equals("/") && displayValue.equals("0")) {
+      errorFlag = true;
+      return;
+    }
+    switch(pendingOperator) {
+      case "+":
+        storedValue += displayInt;
+        break;
+      case "-":
+        storedValue -= displayInt;
+        break;
+      case "*":
+        storedValue *= displayInt;
+        break;
+      case "/":
+        storedValue /= displayInt;
+    }
+    displayValue = Integer.toString(storedValue);
+    enteringNewNumber = true;
+
   }
 
   String getDisplay() {
