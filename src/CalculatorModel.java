@@ -1,6 +1,6 @@
 public class CalculatorModel {
   private int storedValue; //sparas i beräkningen
-  private String displayValue; //det som visas på displayen
+  private String displayValue = "0" //det som visas på displayen
   String pendingOperator;
 
   boolean enteringNewNumber; //avgör om nästa tal ska skriva över eller adderas till display
@@ -20,12 +20,10 @@ public class CalculatorModel {
   }
 
   void applyOperator(String op) {
-    //ska ta in och använda operator
+
     int displayInt = Integer.parseInt(displayValue);
 
-    if (storedValue == 0) {
-      storedValue = displayInt;
-      enteringNewNumber = true;
+    if (enteringNewNumber) {
       pendingOperator = op;
       return;
     }
@@ -60,6 +58,9 @@ public class CalculatorModel {
   }
 
   void clear() {
+    storedValue = 0;
+    displayValue = "0";
+    pendingOperator = null;
 
   }
 
