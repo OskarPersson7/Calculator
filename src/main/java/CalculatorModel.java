@@ -1,6 +1,6 @@
 public class CalculatorModel {
   private int storedValue; //sparas i beräkningen
-  private String displayValue = "0" //det som visas på displayen
+  private String displayValue = "0"; //det som visas på displayen
   String pendingOperator;
 
   boolean enteringNewNumber; //avgör om nästa tal ska skriva över eller adderas till display
@@ -93,11 +93,24 @@ public class CalculatorModel {
 
   }
 
-  String getDisplay() {
+  String getDisplayValue() {
     if (errorFlag) {
       return "Syntax Error";
+    } else {
+      return this.displayValue;
     }
-    return displayValue;
+  }
+
+  int getStoredValue() {
+    return this.storedValue;
+  }
+
+  void setDisplayValue(int n) {
+    this.displayValue = Integer.toString(n);
+  }
+
+  void setStoredValue(int n) {
+    this.storedValue = n;
   }
 
 }
