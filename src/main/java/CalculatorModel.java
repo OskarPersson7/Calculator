@@ -19,18 +19,20 @@ public class CalculatorModel {
     }
   }
 
-  void applyOperator(String op) {
+
+
+  void applyCurrentOperator(String nextOp) {
 
     int displayInt = Integer.parseInt(displayValue);
 
     if (enteringNewNumber) {
-      pendingOperator = op;
+      pendingOperator = nextOp;
       return;
     }
 
     if (pendingOperator == null) {
       storedValue = displayInt;
-      pendingOperator = op;
+      pendingOperator = nextOp;
       enteringNewNumber = true;
       return;
     }
@@ -52,7 +54,7 @@ public class CalculatorModel {
         storedValue /= displayInt;
     }
 
-    pendingOperator = op;
+    pendingOperator = nextOp;
     enteringNewNumber = true;
 
   }
@@ -86,7 +88,7 @@ public class CalculatorModel {
         storedValue *= displayInt;
         break;
       case "/":
-        storedValue /= displayInt;
+        storedValue /= displayInt; //eventuellt behöver värdena sparas som double
     }
     displayValue = Integer.toString(storedValue);
     enteringNewNumber = true;
