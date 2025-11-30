@@ -26,6 +26,17 @@ class CalculatorModelTest {
   }
 
   @Test
+  @DisplayName("Adding negative and positive integer")
+  void testAddNegativeAndPositive() {
+    calc.pendingOperator = "+";
+    calc.setStoredValue(-4);
+    calc.setDisplayValue(3);
+    calc.applyCurrentOperator("+");
+
+    assertEquals(-1,calc.getStoredValue());
+  }
+
+  @Test
   @DisplayName("Subtracting two positive integers")
   void testSubtractTwoPositives() {
     calc.pendingOperator = "-";
@@ -34,6 +45,17 @@ class CalculatorModelTest {
     calc.applyCurrentOperator("+");
 
     assertEquals(1,calc.getStoredValue());
+  }
+
+  @Test
+  @DisplayName("Subtracting positive with negative integer")
+  void testSubtractPositiveWithNegative() {
+    calc.pendingOperator = "-";
+    calc.setStoredValue(4);
+    calc.setDisplayValue(-3);
+    calc.applyCurrentOperator("+");
+
+    assertEquals(7,calc.getStoredValue());
   }
 
   @Test
@@ -68,4 +90,18 @@ class CalculatorModelTest {
 
     assertTrue(calc.errorFlag);
   }
+
+  // behöver fixa double-hantering senare för detta
+  @Test
+  @DisplayName("Dividing with non-divisor")
+  void testDivideWithNonDivisor() {
+    calc.pendingOperator = "/";
+    calc.setStoredValue(4);
+    calc.setDisplayValue(3);
+    calc.applyCurrentOperator("-");
+
+    assertEquals(1, calc.getStoredValue());
+  }
+
+
 }
