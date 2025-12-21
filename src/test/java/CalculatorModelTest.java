@@ -1,3 +1,4 @@
+import Model.CalculatorModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,13 +12,13 @@ class CalculatorModelTest {
   @BeforeEach
   void setUp() {
     calc = new CalculatorModel();
-    calc.enteringNewNumber = false;
+    calc.setEnteringNewNumber(false);
   }
 
   @Test
   @DisplayName("Adding two positive integers")
   void testAddTwoPositives() {
-    calc.pendingOperator = "+";
+    calc.setpendingOperator(+);
     calc.setStoredValue(4);
     calc.setDisplayValue(3);
     calc.applyCurrentOperator("+");

@@ -1,3 +1,5 @@
+package Model;
+
 public class CalculatorModel {
   private int storedValue; //sparas i beräkningen
   private String displayValue = "0"; //det som visas på displayen
@@ -113,6 +115,14 @@ public class CalculatorModel {
 
   void setStoredValue(int n) {
     this.storedValue = n;
+  }
+
+  public boolean isEnteringNewNumber() {
+    return enteringNewNumber;
+  }
+
+  public void setEnteringNewNumber(boolean enteringNewNumber) {
+    this.enteringNewNumber = enteringNewNumber;
   }
 
 }
