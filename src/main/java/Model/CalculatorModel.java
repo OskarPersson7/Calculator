@@ -105,15 +105,15 @@ public class CalculatorModel {
     }
   }
 
-  int getStoredValue() {
+  public int getStoredValue() {
     return this.storedValue;
   }
 
-  void setDisplayValue(int n) {
+  public void setDisplayValue(int n) {
     this.displayValue = Integer.toString(n);
   }
 
-  void setStoredValue(int n) {
+  public void setStoredValue(int n) {
     this.storedValue = n;
   }
 
@@ -125,4 +125,11 @@ public class CalculatorModel {
     this.enteringNewNumber = enteringNewNumber;
   }
 
+  public String getPendingOperator() {
+    return pendingOperator;
+  }
+
+  public void setPendingOperator(String pendingOperator) {
+    this.pendingOperator = pendingOperator;
+  }
 }

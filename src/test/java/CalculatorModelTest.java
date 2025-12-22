@@ -18,7 +18,7 @@ class CalculatorModelTest {
   @Test
   @DisplayName("Adding two positive integers")
   void testAddTwoPositives() {
-    calc.setpendingOperator(+);
+    calc.setPendingOperator(+);
     calc.setStoredValue(4);
     calc.setDisplayValue(3);
     calc.applyCurrentOperator("+");
@@ -29,7 +29,7 @@ class CalculatorModelTest {
   @Test
   @DisplayName("Adding negative and positive integer")
   void testAddNegativeAndPositive() {
-    calc.pendingOperator = "+";
+    calc.setPendingOperator(+);
     calc.setStoredValue(-4);
     calc.setDisplayValue(3);
     calc.applyCurrentOperator("+");
