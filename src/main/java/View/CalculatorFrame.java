@@ -7,11 +7,13 @@ public class CalculatorFrame {
   private int boardWidth = 540;
 
   JFrame frame;
+  DisplayPanel displayPanel;
 
   public CalculatorFrame() {
     frame = new JFrame("Calculator");
     frame.setVisible(true);
-    frame.getContentPane().add()
+    displayPanel = new DisplayPanel();
+    frame.getContentPane().add(displayPanel);
   }
 
 
