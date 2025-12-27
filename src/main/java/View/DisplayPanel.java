@@ -3,7 +3,7 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
-public class DisplayPanel {
+public class DisplayPanel extends JPanel {
 
   private JPanel panel;
   private JLabel display;
