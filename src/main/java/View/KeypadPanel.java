@@ -26,8 +26,15 @@ public class KeypadPanel extends JPanel {
     String[] topSymbols = {"AC", "+/-", "%"};
 
     //iterera över symbolerna och lägg till knappar i panelen
+    for (int i = 0; i < buttonValues.length; i++) {
+      JButton button = new JButton();
+      String buttonValue = buttonValues[i];
+      button.setFont(new Font("Arial", Font.PLAIN, 30));
+      button.setText(buttonValue);
+      keyPadPanel.add(button);
+    }
 
-    //koppla callbacks
+    //koppla callbacks, använd listeners, använd grupperna
 
  }
 
