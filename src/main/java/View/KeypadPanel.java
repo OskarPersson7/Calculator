@@ -3,6 +3,7 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class KeypadPanel extends JPanel {
 
@@ -22,8 +23,9 @@ public class KeypadPanel extends JPanel {
     };
 
     // dela in symboler i grupper
-    String[] rightSymbols = {"÷", "×", "-", "+", "="};
-    String[] topSymbols = {"AC", "+/-", "%"};
+    Set<String> binaryOps = {"÷", "×", "-", "+"};
+    Set<String> unaryOps = {"+/-", "%", "√"};
+    Set<String> digits = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     //iterera över symbolerna och lägg till knappar i panelen
     for (int i = 0; i < buttonValues.length; i++) {
@@ -32,6 +34,16 @@ public class KeypadPanel extends JPanel {
       button.setFont(new Font("Arial", Font.PLAIN, 30));
       button.setText(buttonValue);
       keyPadPanel.add(button);
+
+      if (digits.contains(buttonValue)) {
+        button.setActionCommand("DIGIT:" + buttonValue);
+      } else if (binaryOps.contains(buttonValue)) {
+        button.setActionCommand("BINOP:" + buttonValue);
+      } else if (unaryOps.contains(buttonValue)) {
+        button.setActionCommand("UNOP:" + buttonValue);
+      } else {
+        button.setActionCommand("ACTION:" + buttonValue);
+      }
     }
 
     //koppla callbacks, använd listeners, använd grupperna
